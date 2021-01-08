@@ -21,13 +21,15 @@ with open(bud_data_path, 'r', newline="") as bud_data:
     for row in bud_data:
         row_count +=  1
     print(row_count)
+  
 
     # subtract 1 from row count as last row is null
     row_count = row_count - 1
+    print(row_count)
 
-    # for row in [1,row_count]:
-    #     profit_total = profit_total + bud_data_path[1]
-    # print(profit_total)
+    for row in [1,row_count]:
+        profit_total = profit_total + int(bud_data[1])
+    print(profit_total)       
     
     # # count charges and sum charges, then calculations
     # total_months = 0
