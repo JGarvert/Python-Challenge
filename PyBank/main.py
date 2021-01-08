@@ -10,23 +10,25 @@ bud_data_path = os.path.join("","Resources","budget_data.csv")
 with open(bud_data_path, 'r', newline="") as bud_data:
     csv_reader = csv.reader(bud_data, delimiter=",")
     csv_header = next(csv_reader)
-    print(csv_header)
-    csv_firstrow = next(csv_reader)
-    print(csv_firstrow)
-    # # the below lines work
-    # # lines = file_handler.read()
-    # # print(lines)
-    # # print(type(lines))
+    # # this is a test to view the data
+    # print(csv_header)
+    # csv_firstrow = next(csv_reader)
+    # print(csv_firstrow)
 
-    # # count rows and sum profits then subtract 1 from row as last row is null
-    # row_count = 0
-    # profit_total = 0
-    # for row in bud_data:
-    #     row_count = row_count + 1
-    #     profit_total = profit_total + "amount in [1]"
+    # count rows and sum profits then subtract 1 from row as last row is null
+    row_count = 0
+    profit_total = 0
+    for row in bud_data:
+        row_count +=  1
+    print(row_count)
+
+    # subtract 1 from row count as last row is null
+    row_count = row_count - 1
+
+    # for row in [1,row_count]:
+    #     profit_total = profit_total + bud_data_path[1]
+    # print(profit_total)
     
-    # row_count = row_count - 1
-     
     # # count charges and sum charges, then calculations
     # total_months = 0
     # total_charges = 0
