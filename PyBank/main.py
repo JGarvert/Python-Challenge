@@ -1,4 +1,4 @@
-# Modules
+ Modules
 import os
 import csv
 import locale
@@ -10,70 +10,42 @@ bud_data_path = os.path.join("","Resources","budget_data.csv")
 with open(bud_data_path, 'r', newline="") as bud_data:
     csv_reader = csv.reader(bud_data, delimiter=",")
     csv_header = next(csv_reader)
-    # # this is a test to view the data
+    # this is a test to view the data
     # print(csv_header)
     # csv_firstrow = next(csv_reader)
     # print(csv_firstrow)
 
-    # count rows and sum profits then subtract 1 from row as last row is null
-    row_count = 0
-    profit_total = 0
-    for row in bud_data:
+   
+    # count rows and sum profits.  Note that the original data file included a last row that was null.  I deleted it.
+    first_row = next(csv_reader)
+    row_count = 1
+    profit_total = int(first_row[1])
+    previous_row = int(first_row[1])
+    total_changes = 0
+    change_list = []
+    
+    for row in csv_reader:
         row_count +=  1
-    print(row_count)
-  
+        profit_total = profit_total + int(row[1])
+        change = int(row[1]) - previous_row
+        total_changes = change + total_changes
+        previous_row = int(row[1])
+        change_list.append(change)
 
-    # subtract 1 from row count as last row is null
-    row_count = row_count - 1
-    print(row_count)
+    avg_change = total_changes/(row_count-1)
+    max_change = max(change_list)
+    min_change = min(change_list)
 
-    for row in [1,row_count]:
-        profit_total = profit_total + int(bud_data[1])
-    print(profit_total)       
-    
-    # # count charges and sum charges, then calculations
-    # total_months = 0
-    # total_charges = 0
-    # for row in bud_data:
-    #     if "amount in [1]" < 0
-    #         total_months = total_months+ 1
-    #         total_charges = total_charges+ "amount in [1]"
+    # print to terminal. Does not include date for greatest inc/dec at this time.
+    print("Financial Analysis")
+    print("---------------------------")
+    print(f"Total Months: {row_count}")
+    print("Total Profit/loss: $", format(profit_total, ",.2f"))
+    print(f"Average Change: {total_changes/(row_count -1)}")
+    print(f"Greatest increase in profits: $({max(change_list)})")
+    print(f"Greatest decrease in profits: $({min(change_list)})")
 
-    # charges_avg = charges_total / charges_count
+    # print out results in text
 
-    # # format charges
-    # # testing currency in print statement.....total_charges = local.currency(total_charges)
-    # charges_avg = local.currency(charges_avg)
-    
-    # # greatest increase and decrease with  date and amount
-    # large_inc_date = "[0] of row 1"
-    # large_inc_profit = "[1] of row 1"
-    # large_dec_date = "[0] of row 1"
-    # large_dec_profit = "[1] of row 1"
-
-    # for row in bud_data:
-    #     if("[1] of that row " > large_inc_profit):
-    #         large_inc_date = "[0] of that row"
-    #         large_inc_profit = "[1] of that row"
-    # for row in bud_data:
-    #      if("[1] of that row " < large_inc_profit):
-    #         large_dec_date = "[0] of that row"
-    #         large_dec_profit = "[1] of that row"
-
-    # # print to terminal
-    # print("Financial Analysis")
-    # print("---------------------------")
-    # print(f"Total Months: {total_months}")
-    # print("Total Profit/loss: $", format(total_charges, ",.2f"))
-    # print(f"Average Change: {charges_avg}")"
-    # print(f"Greatest increase in profits: {large_in_date} (${large_inc_profit})")
-    # print(f"Greatest decrease in profits: {large_dec_date} (${large_dec_profit})")
-
-    # # print out results
-    # output_path = os.path.join("","Analysi","budget_data.csv")
-    # # csvwriter = csv.writer(["Total Months","Total Profit/Lose","Avergae charges","Date of greatest increase in profit","Greatest increase in profit","Date of greastes decrease in profit","Greatest decrease in profit"])
-    # # csvwriter = csv.writer({total_months},{total_charges},{charges_avg},{large_inc_date},{large_inc_profit},{large_dec_date},{large_dec_profit})
-    # file_object.write(str1)
-    # file_object.writelines(l) for L = ["Total Months","Total Profit/Lose","Avergae charges","Date of greatest increase in profit","Greatest increase in profit","Date of greastes decrease in profit","Greatest decrease in profit"]
-    # file_object.write(str2)
-    # file_object.writelines(2) for M = [{total_months},{total_charges},{charges_avg},{large_inc_date},{large_inc_profit},{large_dec_date},{large_dec_profit}]
+    title = ["Total Months", "Total Profit/Loss","Average Change". "Increase", "Greatest Decrease"]
+    results = [{row_count},{profit_total},{total_changes/(row_count)-1},{max(change_list)},{min(change_list)}]
