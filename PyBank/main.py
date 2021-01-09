@@ -1,4 +1,4 @@
- Modules
+# Modules
 import os
 import csv
 import locale
@@ -47,5 +47,5 @@ with open(bud_data_path, 'r', newline="") as bud_data:
 
     # print out results in text
 
-    title = ["Total Months", "Total Profit/Loss","Average Change". "Increase", "Greatest Decrease"]
-    results = [{row_count},{profit_total},{total_changes/(row_count)-1},{max(change_list)},{min(change_list)}]
+    # title = ["Total Months", "Total Profit/Loss","Average Change". "Increase", "Greatest Decrease"]
+    # results = [{row_count},{profit_total},{total_changes/(row_count)-1},{max(change_list)},{min(change_list)}]
