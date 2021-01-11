@@ -51,11 +51,14 @@ with open(bud_data_path, 'r', newline="") as bud_data:
     # print to text file
         # first set file path
 
-        # final_file_path = os.path.join("../Analysis","budget_analysis.txt")
+        # 
         # file1 = open(final_file_path,"w")
 
-# with open("../PyBank/Analysis","a") as outputfile:
-    os.remove("Budget Analysis.txt")
+# 
+
+    final_file_path = os.path.join("Analysis","budget_analysis.txt")
+    with open("../PyBank/Analysis","a") as outputfile:
+    # os.remove("Budget Analysis.txt")
     print("Financial Analysis", file=open("Budget Analysis.txt","a"))
     print("---------------------------",file=open("Budget Analysis.txt","a"))
     print(f"Total Months: {row_count}",file=open("Budget Analysis.txt","a"))
