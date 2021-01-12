@@ -46,16 +46,17 @@ with open(elec_data_path, 'r', newline="") as elec_data:
     winner = max(vote_results)
 
     # print to terminal
-    print("Election Results")
-    print("-----------------------------------")
-    print(f"Total Votes: {vote_total}")
-    print(f"{cand_1}: {cand_1_pct} ({vote_per_cand[0]})")
-    print(f"{cand_2}: {cand_2_pct} ({vote_per_cand[1]})")
-    print(f"{cand_3}: {cand_3_pct} ({vote_per_cand[2]})")
-    print(f"{cand_4}: {cand_4_pct} ({vote_per_cand[3]})")
+print("Election Results")
+print("-----------------------------------")
+print(f"Total Votes: {vote_total}")
+print(f"{cand_1}: {cand_1_pct} ({vote_per_cand[0]})")
+print(f"{cand_2}: {cand_2_pct} ({vote_per_cand[1]})")
+print(f"{cand_3}: {cand_3_pct} ({vote_per_cand[2]})")
+print(f"{cand_4}: {cand_4_pct} ({vote_per_cand[3]})")
 
     # print to text file
 textfile_path = os.path.join("","Analysis","Results_PyPoll.txt")
+with open(textfile_path, 'w') as text:
 
     text.write("Election Results")
     text.write("-----------------------------------")
