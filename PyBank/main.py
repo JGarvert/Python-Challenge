@@ -48,17 +48,15 @@ with open(bud_data_path, 'r', newline="") as bud_data:
     print(f"Greatest increase in profits: {max_index_date} $({max(change_list)})")
     print(f"Greatest decrease in profits: {min_index_date} $({min(change_list)})")
   
-    # print to text file
-        # first set file path
-
-        # 
-        # file1 = open(final_file_path,"w")
-
-# 
-
-    final_file_path = os.path.join("Analysis","budget_analysis.txt")
-    with open("../PyBank/Analysis","a") as outputfile:
-    # os.remove("Budget Analysis.txt")
+    # # This was my attempt to print a text file to the correct folder.
+    #     # first set file path
+    # final_file_path = os.path.join("Analysis","budget_analysis.txt")
+    # with open("Analysis","a") as outputfile:
+    #     text.write("Financial Analysis", file=open("Budget Analysis.txt","a"))
+    
+    # delete original text file, if exists.  This assumes that the end user would want to overwrite the file with new data (e.g. for the next month). Otherwise, new results are appended in the same text file.
+    os.remove("Budget Analysis.txt")
+    # print results to text file.
     print("Financial Analysis", file=open("Budget Analysis.txt","a"))
     print("---------------------------",file=open("Budget Analysis.txt","a"))
     print(f"Total Months: {row_count}",file=open("Budget Analysis.txt","a"))
