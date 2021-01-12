@@ -47,14 +47,16 @@ with open(bud_data_path, 'r', newline="") as bud_data:
     print(f"Average Change: $", format(avg_change,",.2f"))
     print(f"Greatest increase in profits: {max_index_date} $({max(change_list)})")
     print(f"Greatest decrease in profits: {min_index_date} $({min(change_list)})")
-  
-    # # This was my attempt to print a text file to the correct folder.
-    #     # first set file path
-    # final_file_path = os.path.join("Analysis","budget_analysis.txt")
-    # with open("Analysis","a") as outputfile:
-    #     text.write("Financial Analysis", file=open("Budget Analysis.txt","a"))
-    
+   
     # delete original text file, if exists.  This assumes that the end user would want to overwrite the file with new data (e.g. for the next month). Otherwise, new results are appended in the same text file.
+    # # my original attempt at writing a text file to the correct folder:
+    # textfile_path = os.path.join("","Analysis","Budget_Analysis.txt")
+    # with open(testfile_path, 'w') as text:
+        # text.write("Budget Analysis\n")
+        # text.write("---------------------\n")
+        # text.write(f"Total Months: {row_count}\n")
+        # text.write("Total Profit/loss: $", format(profit_total,",2.f"), etc...)
+    
     os.remove("Budget Analysis.txt")
     # print results to text file.
     print("Financial Analysis", file=open("Budget Analysis.txt","a"))

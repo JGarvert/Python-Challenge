@@ -65,17 +65,17 @@ print(f"Winner: {winner_name}")
 textfile_path = os.path.join("","Analysis","Results_PyPoll.txt")
 with open(textfile_path, 'w') as text:
 
-    text.write("Election Results")
+    text.write("Election Results\n")
+    text.write("-----------------------------------\n")
+    text.write(f"Total Votes: {vote_total}\n")
+    text.write("-----------------------------------\n")
+    text.write(f"{cand_1}: {cand_1_pct:.3f}% ({vote_per_cand[0]})\n")
+    text.write(f"{cand_2}: {cand_2_pct:.3f}% ({vote_per_cand[1]})\n")
+    text.write(f"{cand_3}: {cand_3_pct:.3f}% ({vote_per_cand[2]})\n")
+    text.write(f"{cand_4}: {cand_4_pct:.3f}% ({vote_per_cand[3]})\n")
+    text.write("-----------------------------------\n")
+    text.write(f"Winner:  {winner_name}\n")
     text.write("-----------------------------------")
-    text.write("-----------------------------------")
-    text.write(f"Total Votes: {vote_total}")
-    text.write(f"{cand_1}: {cand_1_pct} ({vote_per_cand[0]})")
-    text.write(f"{cand_2}: {cand_2_pct} ({vote_per_cand[1]})")
-    text.write(f"{cand_3}: {cand_3_pct} ({vote_per_cand[2]})")
-    text.write(f"{cand_4}: {cand_4_pct} ({vote_per_cand[3]})")
-    text.write("-----------------------------------")
-    text.write(f"Winner:  {winner_name}")
-
   
 
 
